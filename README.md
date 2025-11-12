@@ -28,7 +28,11 @@ AGENTS.md                  # Guia rápido para agentes/contribuidores
 
 ## Passo a passo de setup
 1. **Clonar e configurar variáveis**  
-   - Copie `.env` e `.db.env` tomando o exemplo da documentação do Firefly III (não inclusos aqui).
+   - Use o helper para gerar os arquivos reais a partir dos exemplos e depois ajuste os valores:
+     ```bash
+     ./scripts/setup-env.sh
+     ```
+   - Caso queira fazer na mão: copie `.env.example`, `.db.env.example` e `.importer.env.example` para as versões reais e personalize.
 2. **Popular hosts locais**  
    ```
    127.0.0.1 finanseg.local
