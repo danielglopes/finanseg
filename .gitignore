@@ -25,3 +25,9 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+# Certificates (kept local only)
+nginx/certs/*
+!nginx/certs/.gitkeep
+!nginx/certs/README.md
+!nginx/certs/san.cnf.example
