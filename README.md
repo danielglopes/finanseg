@@ -37,14 +37,12 @@ AGENTS.md                  # Guia rápido para agentes/contribuidores
 3. **(Opcional) Importar CA no sistema**  
    Instale `nginx/certs/ca.pem` no trust store do seu SO/navegador para evitar avisos TLS.
 4. **Gerar/rotacionar certificados**
-   - Coloque `ca.key` e `ca.pem` (sua CA local) em `nginx/certs/` — eles não são versionados.
-   - Rode o script auxiliar (gera SAN, key, CSR e certificado assinado automaticamente):
+   - Execute o script automatizado; ele cria a CA local (se não existir), gera `dhparam.pem`, garante `san.cnf`, produz `server.key/csr/crt` e valida tudo.
      ```bash
-     ./scripts/generate-certs.sh           # CN padrão app.finanseg.local
-     # ou informe outro Common Name:
-     ./scripts/generate-certs.sh custom.domain.local
+     ./scripts/generate-certs.sh                # CN padrão app.finanseg.local
+     ./scripts/generate-certs.sh my.domain.test # Common Name customizado
      ```
-   - O script faz backup dos artefatos anteriores e executa `openssl verify` ao final. Ajuste `nginx/certs/san.cnf` caso queira incluir SAN adicionais.
+   - Os arquivos ficam apenas em `nginx/certs/` (ignorados pelo Git). Edite `nginx/certs/san.cnf` se quiser SAN extras antes de rodar novamente. Variáveis `CA_DAYS`, `SERVER_DAYS` e `DH_BITS` podem ser exportadas para customizar validade e tamanho do dhparam.
 5. **Subir os serviços**  
    ```bash
    docker compose up -d

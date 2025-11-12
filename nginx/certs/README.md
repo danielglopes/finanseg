@@ -9,7 +9,12 @@ Este diretório armazena apenas artefatos *locais* de TLS. Para evitar vazamento
 ./scripts/generate-certs.sh            # usa SAN padrão
 ./scripts/generate-certs.sh my.domain  # Common Name customizado
 ```
-O script garante que `san.cnf` exista (baseado em `san.cnf.example`), gera `server.key`, `server.csr`, assina `server.crt` com `ca.key/ca.pem` e roda `openssl verify`. Artefatos anteriores são salvos com sufixo `.bak`.
+O script:
+- cria/atualiza `san.cnf` (a partir de `san.cnf.example`);
+- gera uma CA local (`ca.key` + `ca.pem`) e exporta `fireflyCA.crt` se ela não existir;
+- produz `dhparam.pem` (configurável via `DH_BITS`, default 2048);
+- gera `server.key`, `server.csr`, assina `server.crt` com a CA e roda `openssl verify`;
+- faz backup de artefatos antigos (`*.bak` com carimbo de tempo).
 
 ### 2. Procedimento manual (quando quiser personalizar tudo)
 ```bash
