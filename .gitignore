@@ -1,0 +1,21 @@
+# Environment & secrets
+.env
+.db.env
+.env.*
+
+# Docker overrides
+docker-compose.override.yml
+compose.override.yaml
+
+# Logs & temp files
+*.log
+logs/
+tmp/
+
+# Editor / OS cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
