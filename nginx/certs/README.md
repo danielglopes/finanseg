@@ -3,26 +3,25 @@
 Este diretório armazena apenas artefatos *locais* de TLS. Para evitar vazamento de segredos, os arquivos reais são ignorados no Git (.gitignore). Gere-os manualmente antes de subir o stack.
 
 ## Passo a passo rápido
+### 1. Script automatizado (recomendado)
+```bash
+# a partir da raiz do projeto
+./scripts/generate-certs.sh            # usa SAN padrão
+./scripts/generate-certs.sh my.domain  # Common Name customizado
+```
+O script garante que `san.cnf` exista (baseado em `san.cnf.example`), gera `server.key`, `server.csr`, assina `server.crt` com `ca.key/ca.pem` e roda `openssl verify`. Artefatos anteriores são salvos com sufixo `.bak`.
+
+### 2. Procedimento manual (quando quiser personalizar tudo)
 ```bash
 cd nginx/certs
-
-# 1. Ajuste os domínios conforme necessário
-cp san.cnf.example san.cnf
-
-# 2. Gere/rotacione a chave do servidor
+cp san.cnf.example san.cnf   # ajuste os domínios
 openssl genrsa -out server.key 2048
-
-# 3. Crie o CSR
 openssl req -new -key server.key \
   -subj "/C=BR/ST=MG/L=Local/O=FinanSeg/OU=TI/CN=app.finanseg.local" \
   -out server.csr
-
-# 4. Assine usando a CA local existente (copie/importe ca.key + ca.pem manualmente)
 openssl x509 -req -in server.csr \
   -CA ca.pem -CAkey ca.key -CAcreateserial \
   -out server.crt -days 825 -sha256 -extfile san.cnf
-
-# 5. Conferir
 openssl verify -CAfile ca.pem server.crt
 ```
 

@@ -36,25 +36,15 @@ AGENTS.md                  # Guia rápido para agentes/contribuidores
    ```
 3. **(Opcional) Importar CA no sistema**  
    Instale `nginx/certs/ca.pem` no trust store do seu SO/navegador para evitar avisos TLS.
-4. **Gerar/rotacionar certificados**  
-   No diretório `nginx/certs`:
-   ```bash
-   cat <<'EOF' > san.cnf
-   subjectAltName = @alt_names
-   [alt_names]
-   DNS.1 = app.finanseg.local
-   DNS.2 = finanseg.local
-   EOF
-
-   openssl genrsa -out server.key 2048
-   openssl req -new -key server.key \
-     -subj "/C=BR/ST=MG/L=Local/O=FinanSeg/OU=TI/CN=app.finanseg.local" \
-     -out server.csr
-   openssl x509 -req -in server.csr \
-     -CA ca.pem -CAkey ca.key -CAcreateserial \
-     -out server.crt -days 825 -sha256 -extfile san.cnf
-   openssl verify -CAfile ca.pem server.crt
-   ```
+4. **Gerar/rotacionar certificados**
+   - Coloque `ca.key` e `ca.pem` (sua CA local) em `nginx/certs/` — eles não são versionados.
+   - Rode o script auxiliar (gera SAN, key, CSR e certificado assinado automaticamente):
+     ```bash
+     ./scripts/generate-certs.sh           # CN padrão app.finanseg.local
+     # ou informe outro Common Name:
+     ./scripts/generate-certs.sh custom.domain.local
+     ```
+   - O script faz backup dos artefatos anteriores e executa `openssl verify` ao final. Ajuste `nginx/certs/san.cnf` caso queira incluir SAN adicionais.
 5. **Subir os serviços**  
    ```bash
    docker compose up -d
