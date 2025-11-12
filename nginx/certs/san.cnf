@@ -1,3 +1,4 @@
 subjectAltName = @alt_names
 [alt_names]
-DNS.1 = firefly.local
+DNS.1 = app.finanseg.local
+DNS.2 = finanseg.local
