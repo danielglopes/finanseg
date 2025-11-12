@@ -1,7 +1,13 @@
 # Environment & secrets
 .env
 .db.env
+.importer.env
 .env.*
+.db.env.*
+.importer.env.*
+!.env.example
+!.db.env.example
+!.importer.env.example
 
 # Docker overrides
 docker-compose.override.yml
