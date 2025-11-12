@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Segurança · FinanSeg</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <span class="logo-dot"></span>
+            <div>
+                <strong>FinanSeg</strong>
+                <small>Gestão Financeira</small>
+            </div>
+        </div>
+        <nav>
+            <a href="/">Início</a>
+            <a href="/sobre.html">Sobre</a>
+            <a class="active" href="/politica.html">Política</a>
+            <a href="/contato.html">Contato</a>
+            <a class="button ghost" href="https://app.finanseg.local/login">Acessar Sistema</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section class="page-header">
+            <p class="eyebrow">Política de Segurança da Informação</p>
+            <h1>Confidencialidade, integridade e disponibilidade acima de tudo.</h1>
+            <p>
+                A PSI da FinanSeg segue os pilares da LGPD e da ISO/IEC 27001 para proteger cada dado financeiro
+                armazenado em nossa plataforma.
+            </p>
+        </section>
+
+        <section class="policy-list">
+            <article>
+                <h2>Base normativa</h2>
+                <p>
+                    Todos os controles são inspirados nas melhores práticas da ISO/IEC 27001 e garantem aderência
+                    à Lei Geral de Proteção de Dados (LGPD).
+                </p>
+            </article>
+            <article>
+                <h2>Princípios</h2>
+                <ul>
+                    <li>Confidencialidade: acesso mínimo necessário e criptografia ponta a ponta.</li>
+                    <li>Integridade: monitoramento contínuo e validações automáticas de dados.</li>
+                    <li>Disponibilidade: arquitetura redundante e respostas rápidas a incidentes.</li>
+                </ul>
+            </article>
+            <article>
+                <h2>Controles obrigatórios</h2>
+                <ul>
+                    <li>MFA obrigatório para colaboradores e clientes premium.</li>
+                    <li>Backups diários criptografados e testados periodicamente.</li>
+                    <li>Monitoramento 24/7 com alertas correlacionados e SOC virtual.</li>
+                </ul>
+            </article>
+        </section>
+
+        <div class="actions">
+            <a class="button primary" href="https://app.finanseg.local/login">Acessar Sistema</a>
+            <a class="button secondary" href="/contato.html">Precisa de suporte?</a>
+        </div>
+    </main>
+
+    <footer>
+        © <span id="year"></span> FinanSeg Gestão Financeira · Segurança primeiro.
+    </footer>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanSeg Gestão Financeira</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <span class="logo-dot"></span>
+            <div>
+                <strong>FinanSeg</strong>
+                <small>Gestão Financeira</small>
+            </div>
+        </div>
+        <nav>
+            <a href="/">Início</a>
+            <a href="/sobre.html">Sobre</a>
+            <a href="/politica.html">Política</a>
+            <a href="/contato.html">Contato</a>
+            <a class="button ghost" href="https://app.finanseg.local/login">Acessar Sistema</a>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <section class="hero-content">
+            <p class="eyebrow">FinanSeg Gestão Financeira</p>
+            <h1>Soluções em controle financeiro pessoal e investimentos.</h1>
+            <p class="lead">
+                A FinanSeg entrega uma plataforma completa para visualizar patrimônio, planejar metas e
+                proteger o futuro financeiro dos seus clientes com decisões baseadas em dados.
+            </p>
+            <div class="actions">
+                <a class="button primary" href="https://app.finanseg.local/login">Acessar Sistema</a>
+                <a class="button secondary" href="/sobre.html">Conheça a FinanSeg</a>
+            </div>
+        </section>
+        <section class="hero-card">
+            <h2>Controle em tempo real</h2>
+            <ul>
+                <li>Dashboard de fluxo de caixa</li>
+                <li>Alertas inteligentes de gastos</li>
+                <li>Investimentos consolidados</li>
+            </ul>
+            <a class="button ghost" href="/politica.html">Política de Segurança</a>
+        </section>
+    </main>
+
+    <footer>
+        © <span id="year"></span> FinanSeg Gestão Financeira · Segurança primeiro.
+    </footer>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
